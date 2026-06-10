@@ -165,7 +165,7 @@ export default function TokenBurnDashboard() {
         <Panel
           label="Repos"
           title="Where exact agent burn went"
-          note="Public-safe labels from local cwd metadata; exact Codex and Claude Code usage only."
+          note="Top 12 public-safe labels from local cwd metadata; exact Codex and Claude Code usage only."
         >
           <div className="repoGrid">
             {repos.map((repo) => (
@@ -346,7 +346,7 @@ function buildRepoSummaryRows(selectedRows: typeof repoRows, total: number) {
       share: total ? Math.round((repo.total / total) * 100) : 0,
     }))
     .sort((a, b) => b.total - a.total)
-    .slice(0, 8);
+    .slice(0, 12);
 }
 
 function buildNextActions(

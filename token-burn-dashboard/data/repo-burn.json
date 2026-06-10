@@ -55,20 +55,20 @@
   },
   {
     "date": "2026-04-18",
+    "repo": "Hive",
+    "codex_tokens": 0,
+    "claude_code_tokens": 5085161,
+    "claude_code_calls": 62,
+    "total": 5085161,
+    "evidence": "Public-safe repo label from local cwd metadata."
+  },
+  {
+    "date": "2026-04-18",
     "repo": "MATLAB integration",
     "codex_tokens": 370801,
     "claude_code_tokens": 0,
     "claude_code_calls": 0,
     "total": 370801,
-    "evidence": "Public-safe repo label from local cwd metadata."
-  },
-  {
-    "date": "2026-04-18",
-    "repo": "Remote worktree",
-    "codex_tokens": 0,
-    "claude_code_tokens": 5085161,
-    "claude_code_calls": 62,
-    "total": 5085161,
     "evidence": "Public-safe repo label from local cwd metadata."
   },
   {
@@ -271,7 +271,7 @@
   },
   {
     "date": "2026-05-14",
-    "repo": "Work tracker",
+    "repo": "Work",
     "codex_tokens": 0,
     "claude_code_tokens": 6497851,
     "claude_code_calls": 83,
@@ -280,7 +280,7 @@
   },
   {
     "date": "2026-05-15",
-    "repo": "Web app",
+    "repo": "Site",
     "codex_tokens": 0,
     "claude_code_tokens": 979694,
     "claude_code_calls": 16,
@@ -289,7 +289,7 @@
   },
   {
     "date": "2026-05-15",
-    "repo": "Work tracker",
+    "repo": "Work",
     "codex_tokens": 0,
     "claude_code_tokens": 9301950,
     "claude_code_calls": 63,
@@ -307,7 +307,7 @@
   },
   {
     "date": "2026-05-16",
-    "repo": "Work tracker",
+    "repo": "Work",
     "codex_tokens": 0,
     "claude_code_tokens": 853702,
     "claude_code_calls": 13,
@@ -343,7 +343,7 @@
   },
   {
     "date": "2026-05-19",
-    "repo": "Work tracker",
+    "repo": "Work",
     "codex_tokens": 0,
     "claude_code_tokens": 6509779,
     "claude_code_calls": 40,
@@ -478,15 +478,6 @@
   },
   {
     "date": "2026-05-28",
-    "repo": "Core service",
-    "codex_tokens": 0,
-    "claude_code_tokens": 3175739,
-    "claude_code_calls": 36,
-    "total": 3175739,
-    "evidence": "Public-safe repo label from local cwd metadata."
-  },
-  {
-    "date": "2026-05-28",
     "repo": "Docs",
     "codex_tokens": 0,
     "claude_code_tokens": 3275685,
@@ -501,6 +492,15 @@
     "claude_code_tokens": 11953835,
     "claude_code_calls": 60,
     "total": 11953835,
+    "evidence": "Public-safe repo label from local cwd metadata."
+  },
+  {
+    "date": "2026-05-28",
+    "repo": "Hive",
+    "codex_tokens": 0,
+    "claude_code_tokens": 3175739,
+    "claude_code_calls": 36,
+    "total": 3175739,
     "evidence": "Public-safe repo label from local cwd metadata."
   },
   {
@@ -559,7 +559,7 @@
   },
   {
     "date": "2026-06-02",
-    "repo": "Work tracker",
+    "repo": "Work",
     "codex_tokens": 0,
     "claude_code_tokens": 4000921,
     "claude_code_calls": 29,
@@ -588,32 +588,50 @@
     "date": "2026-06-05",
     "repo": "Docs",
     "codex_tokens": 0,
-    "claude_code_tokens": 149836601,
-    "claude_code_calls": 498,
-    "total": 149836601,
+    "claude_code_tokens": 66010501,
+    "claude_code_calls": 200,
+    "total": 66010501,
     "evidence": "Public-safe repo label from local cwd metadata."
   },
   {
-    "date": "2026-06-06",
-    "repo": "Core service",
+    "date": "2026-06-05",
+    "repo": "Hive",
     "codex_tokens": 0,
-    "claude_code_tokens": 134304431,
-    "claude_code_calls": 320,
-    "total": 134304431,
+    "claude_code_tokens": 42602539,
+    "claude_code_calls": 175,
+    "total": 42602539,
+    "evidence": "Public-safe repo label from local cwd metadata."
+  },
+  {
+    "date": "2026-06-05",
+    "repo": "Site",
+    "codex_tokens": 0,
+    "claude_code_tokens": 41223561,
+    "claude_code_calls": 123,
+    "total": 41223561,
     "evidence": "Public-safe repo label from local cwd metadata."
   },
   {
     "date": "2026-06-06",
     "repo": "Docs",
     "codex_tokens": 0,
-    "claude_code_tokens": 97665784,
-    "claude_code_calls": 261,
-    "total": 97665784,
+    "claude_code_tokens": 9198805,
+    "claude_code_calls": 49,
+    "total": 9198805,
+    "evidence": "Public-safe repo label from local cwd metadata."
+  },
+  {
+    "date": "2026-06-06",
+    "repo": "Hive",
+    "codex_tokens": 0,
+    "claude_code_tokens": 222771410,
+    "claude_code_calls": 532,
+    "total": 222771410,
     "evidence": "Public-safe repo label from local cwd metadata."
   },
   {
     "date": "2026-06-07",
-    "repo": "Core service",
+    "repo": "Docs",
     "codex_tokens": 0,
     "claude_code_tokens": 20901573,
     "claude_code_calls": 54,
@@ -622,7 +640,7 @@
   },
   {
     "date": "2026-06-07",
-    "repo": "Docs",
+    "repo": "Hive",
     "codex_tokens": 0,
     "claude_code_tokens": 6779990,
     "claude_code_calls": 47,
@@ -633,9 +651,18 @@
     "date": "2026-06-08",
     "repo": "Docs",
     "codex_tokens": 0,
-    "claude_code_tokens": 193704021,
-    "claude_code_calls": 538,
-    "total": 193704021,
+    "claude_code_tokens": 77513845,
+    "claude_code_calls": 202,
+    "total": 77513845,
+    "evidence": "Public-safe repo label from local cwd metadata."
+  },
+  {
+    "date": "2026-06-08",
+    "repo": "Hive",
+    "codex_tokens": 0,
+    "claude_code_tokens": 116190176,
+    "claude_code_calls": 336,
+    "total": 116190176,
     "evidence": "Public-safe repo label from local cwd metadata."
   },
   {
@@ -651,18 +678,27 @@
     "date": "2026-06-10",
     "repo": "Docs",
     "codex_tokens": 0,
-    "claude_code_tokens": 105687415,
-    "claude_code_calls": 303,
-    "total": 105687415,
+    "claude_code_tokens": 38770692,
+    "claude_code_calls": 143,
+    "total": 38770692,
+    "evidence": "Public-safe repo label from local cwd metadata."
+  },
+  {
+    "date": "2026-06-10",
+    "repo": "Hive",
+    "codex_tokens": 0,
+    "claude_code_tokens": 69770391,
+    "claude_code_calls": 175,
+    "total": 69770391,
     "evidence": "Public-safe repo label from local cwd metadata."
   },
   {
     "date": "2026-06-10",
     "repo": "Token dashboard",
-    "codex_tokens": 14033774,
+    "codex_tokens": 16300497,
     "claude_code_tokens": 17025,
     "claude_code_calls": 1,
-    "total": 14050799,
+    "total": 16317522,
     "evidence": "Public-safe repo label from local cwd metadata."
   }
 ]

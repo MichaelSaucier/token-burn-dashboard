@@ -110,6 +110,8 @@ function collectCodexUsage(zone, aliases) {
 
 function collectClaudeCodeUsage(zone, aliases) {
   const root = join(homedir(), ".claude", "projects");
+  const files = jsonlFiles(root);
+  const sessionRepoHints = buildClaudeSessionRepoHints(files, aliases);
   const byDate = new Map();
   const callsByDate = new Map();
   const byRepoDate = new Map();
@@ -117,7 +119,7 @@ function collectClaudeCodeUsage(zone, aliases) {
   let calls = 0;
   let unattributedEvents = 0;
 
-  for (const file of jsonlFiles(root)) {
+  for (const file of files) {
     for (const row of readJsonl(file)) {
       if (row?.type !== "assistant") continue;
 
@@ -139,7 +141,8 @@ function collectClaudeCodeUsage(zone, aliases) {
       if (!tokens) continue;
 
       const date = localDate(new Date(timestamp), zone);
-      const repo = aliases.aliasForCwd(row?.cwd || row?.message?.cwd);
+      const sessionId = row?.sessionId || file;
+      const repo = sessionRepoHints.get(sessionId) || aliases.aliasForCwd(row?.cwd || row?.message?.cwd);
       if (repo === "unattributed") unattributedEvents += 1;
 
       add(byDate, date, tokens);
@@ -153,6 +156,84 @@ function collectClaudeCodeUsage(zone, aliases) {
   }
 
   return { byDate, callsByDate, byRepoDate, calls, unattributedEvents };
+}
+
+function buildClaudeSessionRepoHints(files, aliases) {
+  const counters = new Map();
+
+  for (const file of files) {
+    for (const row of readJsonl(file)) {
+      const sessionId = row?.sessionId || file;
+      const keys = repoKeysFromMetadata(row);
+      if (keys.length === 0) continue;
+
+      const counter = counters.get(sessionId) || new Map();
+      for (const key of keys) {
+        counter.set(key, (counter.get(key) || 0) + 1);
+      }
+      counters.set(sessionId, counter);
+    }
+  }
+
+  const hints = new Map();
+
+  for (const [sessionId, counter] of counters) {
+    const ranked = Array.from(counter, ([key, count]) => ({ key, count })).sort(
+      (a, b) => b.count - a.count || a.key.localeCompare(b.key),
+    );
+    if (ranked.length === 0) continue;
+
+    hints.set(sessionId, aliases.aliasForRepoKey(ranked[0].key));
+  }
+
+  return hints;
+}
+
+function repoKeysFromMetadata(value) {
+  const keys = [];
+
+  function walk(node) {
+    if (Array.isArray(node)) {
+      for (const item of node) walk(item);
+      return;
+    }
+
+    if (!node || typeof node !== "object") return;
+
+    for (const [key, child] of Object.entries(node)) {
+      const lowerKey = key.toLowerCase();
+      const isRepoField =
+        lowerKey === "repo" ||
+        lowerKey === "prrepository" ||
+        lowerKey === "repository" ||
+        lowerKey === "repository_full_name" ||
+        lowerKey === "repositoryfullname";
+
+      if (isRepoField && typeof child === "string") {
+        const repoKey = repoKeyFromMetadataValue(child);
+        if (repoKey) keys.push(repoKey);
+      }
+
+      if (child && typeof child === "object") walk(child);
+    }
+  }
+
+  walk(value);
+  return keys;
+}
+
+function repoKeyFromMetadataValue(value) {
+  const cleaned = value.trim();
+  if (!cleaned || cleaned.length > 120) return "";
+  if (/[()+,]/.test(cleaned)) return "";
+
+  const normalized = cleaned.replace(/\\/g, "/").replace(/^https?:\/\/github\.com\//i, "");
+  const parts = normalized.split("/").filter(Boolean);
+
+  if (parts.length === 1 && /^[a-z0-9._-]+$/i.test(parts[0])) return slug(parts[0]);
+  if (parts.length === 2 && parts[0].toLowerCase() === "transpara-ai") return slug(parts[1]);
+
+  return "";
 }
 
 function buildRepoRows(repoMaps) {
@@ -296,6 +377,19 @@ function createRepoAliasResolver(path) {
     get count() {
       return Object.keys(state.repoAliases).length;
     },
+    aliasForRepoKey(key) {
+      if (!key) return "unattributed";
+
+      if (!state.repoAliases[key]) {
+        state.repoAliases[key] = hashedRepoAlias(state.aliasSalt, key);
+        changed = true;
+      } else if (isSequentialAlias(state.repoAliases[key])) {
+        state.repoAliases[key] = hashedRepoAlias(state.aliasSalt, key);
+        changed = true;
+      }
+
+      return state.repoAliases[key];
+    },
     aliasForCwd(cwd) {
       const cacheKey = typeof cwd === "string" ? cwd : "";
       if (cwdCache.has(cacheKey)) return cwdCache.get(cacheKey);
@@ -306,16 +400,9 @@ function createRepoAliasResolver(path) {
         return "unattributed";
       }
 
-      if (!state.repoAliases[key]) {
-        state.repoAliases[key] = hashedRepoAlias(state.aliasSalt, key);
-        changed = true;
-      } else if (isSequentialAlias(state.repoAliases[key])) {
-        state.repoAliases[key] = hashedRepoAlias(state.aliasSalt, key);
-        changed = true;
-      }
-
-      cwdCache.set(cacheKey, state.repoAliases[key]);
-      return state.repoAliases[key];
+      const alias = this.aliasForRepoKey(key);
+      cwdCache.set(cacheKey, alias);
+      return alias;
     },
     save() {
       if (!changed && existsSync(path)) return;
