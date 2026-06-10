@@ -79,9 +79,17 @@ function collectCodexUsage(zone, aliases) {
   let unattributedEvents = 0;
 
   for (const file of roots.flatMap((root) => jsonlFiles(root))) {
+    const rows = readJsonl(file);
+    const turnRepoHints = buildCodexTurnRepoHints(rows);
+    const repoKeyCache = new Map();
     let currentCwd = "";
+    let currentTurnId = "";
 
-    for (const row of readJsonl(file)) {
+    for (const row of rows) {
+      if (row?.type === "turn_context" && typeof row?.payload?.turn_id === "string") {
+        currentTurnId = row.payload.turn_id;
+      }
+
       if (typeof row?.payload?.cwd === "string" && row.payload.cwd.trim()) {
         currentCwd = row.payload.cwd;
       }
@@ -96,7 +104,13 @@ function collectCodexUsage(zone, aliases) {
       seen.add(key);
 
       const date = localDate(new Date(timestamp), zone);
-      const repo = aliases.aliasForCwd(row?.payload?.cwd || currentCwd);
+      const repoKey = repoKeyForCodexUsage(
+        row?.payload?.cwd || currentCwd,
+        currentTurnId,
+        turnRepoHints,
+        repoKeyCache,
+      );
+      const repo = aliases.aliasForRepoKey(repoKey);
       if (repo === "unattributed") unattributedEvents += 1;
 
       add(byDate, date, tokens);
@@ -106,6 +120,138 @@ function collectCodexUsage(zone, aliases) {
   }
 
   return { byDate, byRepoDate, events, unattributedEvents };
+}
+
+function buildCodexTurnRepoHints(rows) {
+  if (
+    !rows.some(
+      (row) =>
+        typeof row?.payload?.cwd === "string" &&
+        row.payload.cwd.toLowerCase().includes("codex-hive-refactor"),
+    )
+  ) {
+    return new Map();
+  }
+
+  const counters = new Map();
+  let currentTurnId = "";
+
+  for (const row of rows) {
+    if (row?.type === "turn_context" && typeof row?.payload?.turn_id === "string") {
+      currentTurnId = row.payload.turn_id;
+    }
+
+    if (!currentTurnId) continue;
+
+    const source = codexRepoHintSource(row);
+    if (!source) continue;
+
+    const counter = counters.get(currentTurnId) || new Map();
+    for (const key of repoKeysFromCodexToolContext(source)) {
+      counter.set(key, (counter.get(key) || 0) + 1);
+    }
+    if (counter.size > 0) counters.set(currentTurnId, counter);
+  }
+
+  const hints = new Map();
+  for (const [turnId, counter] of counters) {
+    const ranked = Array.from(counter, ([key, count]) => ({ key, count })).sort(
+      (a, b) => b.count - a.count || a.key.localeCompare(b.key),
+    );
+    if (ranked[0]) hints.set(turnId, ranked[0].key);
+  }
+
+  return hints;
+}
+
+function codexRepoHintSource(row) {
+  const payload = row?.payload || {};
+  const payloadType = payload.type || "";
+
+  if (row?.type === "turn_context") return { cwd: payload.cwd };
+
+  if (row?.type === "event_msg" && payloadType === "exec_command_end") {
+    return { cwd: payload.cwd, command: payload.command, parsed_cmd: payload.parsed_cmd };
+  }
+
+  if (row?.type === "event_msg" && payloadType === "patch_apply_end") {
+    return { changes: payload.changes };
+  }
+
+  if (row?.type === "event_msg" && payloadType === "mcp_tool_call_end") {
+    return { invocation: payload.invocation };
+  }
+
+  if (row?.type === "response_item" && payloadType === "function_call") {
+    return { name: payload.name, arguments: payload.arguments };
+  }
+
+  if (row?.type === "response_item" && payloadType === "custom_tool_call") {
+    return { name: payload.name, input: payload.input };
+  }
+
+  return null;
+}
+
+function repoKeysFromCodexToolContext(value) {
+  const keys = [];
+
+  function walk(node) {
+    if (typeof node === "string") {
+      keys.push(...repoKeysFromCodexHintString(node));
+      return;
+    }
+
+    if (Array.isArray(node)) {
+      for (const item of node) walk(item);
+      return;
+    }
+
+    if (!node || typeof node !== "object") return;
+
+    for (const child of Object.values(node)) walk(child);
+  }
+
+  walk(value);
+  return keys;
+}
+
+function repoKeysFromCodexHintString(value) {
+  const keys = [];
+  const text = String(value || "");
+  const workspacePattern = /codex-hive-refactor[\\/]+([A-Za-z0-9._-]+)/gi;
+  let match;
+
+  while ((match = workspacePattern.exec(text))) {
+    const key = repoKeyFromHiveWorkspaceChild(match[1]);
+    if (key) keys.push(key);
+  }
+
+  const pathPattern =
+    /(^|[\s"'`=:(\\/])((site|work|docs|hive|eventgraph|event-graph)(?:-[A-Za-z0-9._-]+)?)([\\/]|$)/gi;
+  while ((match = pathPattern.exec(text))) {
+    const key = repoKeyFromHiveWorkspaceChild(match[2]);
+    if (key) keys.push(key);
+  }
+
+  return keys;
+}
+
+function repoKeyForCodexUsage(cwd, turnId, turnRepoHints, repoKeyCache) {
+  if (isHiveWorkspaceRoot(cwd)) {
+    return turnRepoHints.get(turnId) || repoKeyFromCwdCached(cwd, repoKeyCache);
+  }
+
+  return repoKeyFromCwdCached(cwd, repoKeyCache);
+}
+
+function repoKeyFromCwdCached(cwd, repoKeyCache) {
+  const cacheKey = typeof cwd === "string" ? cwd : "";
+  if (repoKeyCache.has(cacheKey)) return repoKeyCache.get(cacheKey);
+
+  const repoKey = repoKeyFromCwd(cwd);
+  repoKeyCache.set(cacheKey, repoKey);
+  return repoKey;
 }
 
 function collectClaudeCodeUsage(zone, aliases) {
@@ -257,7 +403,10 @@ function buildRepoRows(repoMaps) {
       claude_code_tokens: row.claude_code_tokens,
       claude_code_calls: row.claude_code_calls,
       total: row.codex_tokens + row.claude_code_tokens,
-      evidence: row.repo === "unattributed" ? "No cwd metadata available." : "Public-safe repo label from local cwd metadata.",
+      evidence:
+        row.repo === "unattributed"
+          ? "No cwd metadata available."
+          : "Exact token totals; public-safe repo label from local cwd and tool context metadata.",
     }))
     .filter((row) => row.total > 0)
     .sort((a, b) => a.date.localeCompare(b.date) || a.repo.localeCompare(b.repo));
@@ -459,6 +608,12 @@ function repoKeyFromCwd(cwd) {
 
   if (claudeIndex > 0) return slug(segments[claudeIndex - 1]);
 
+  const hiveWorkspaceIndex = lowerSegments.lastIndexOf("codex-hive-refactor");
+  if (hiveWorkspaceIndex >= 0) {
+    const childRepoKey = repoKeyFromHiveWorkspaceChild(segments[hiveWorkspaceIndex + 1]);
+    return childRepoKey || "hive";
+  }
+
   const reposIndex = lowerSegments.lastIndexOf("repos");
   if (reposIndex >= 0 && segments[reposIndex + 1]) return slug(segments[reposIndex + 1]);
 
@@ -472,6 +627,34 @@ function repoKeyFromCwd(cwd) {
   }
 
   return slug(segments.at(-1) || "");
+}
+
+function isHiveWorkspaceRoot(cwd) {
+  if (typeof cwd !== "string" || !cwd.trim()) return false;
+
+  const normalized = cwd.replace(/\\/g, "/").replace(/\/+$/, "");
+  const segments = normalized.split("/").filter(Boolean);
+  const lowerSegments = segments.map((segment) => segment.toLowerCase());
+  const hiveWorkspaceIndex = lowerSegments.lastIndexOf("codex-hive-refactor");
+
+  return hiveWorkspaceIndex >= 0 && !segments[hiveWorkspaceIndex + 1];
+}
+
+function repoKeyFromHiveWorkspaceChild(value) {
+  const key = slug(value || "");
+  if (!key) return "";
+
+  if (key === "site" || key.startsWith("site-")) return "site";
+  if (key === "work" || key.startsWith("work-")) return "work";
+  if (key === "docs" || key.startsWith("docs-")) return "docs";
+  if (key === "eventgraph" || key === "event-graph" || key.startsWith("eventgraph-") || key.startsWith("event-graph-")) {
+    return "eventgraph";
+  }
+  if (key === "hive" || key.startsWith("hive-")) return "hive";
+  if (key === "tsystem-api" || key.startsWith("tsystem-api-")) return "tsystem-api";
+  if (key === "tinstaller" || key.startsWith("tinstaller-")) return "tinstaller";
+
+  return "";
 }
 
 function gitTopLevel(cwd) {
