@@ -316,20 +316,20 @@
   },
   {
     "date": "2026-05-14",
+    "repo": "agent",
+    "codex_tokens": 0,
+    "claude_code_tokens": 1235548,
+    "claude_code_calls": 14,
+    "total": 1235548,
+    "evidence": "Exact token totals; public-safe repo label from local cwd and tool context metadata."
+  },
+  {
+    "date": "2026-05-14",
     "repo": "Event graph",
     "codex_tokens": 0,
     "claude_code_tokens": 3024741,
     "claude_code_calls": 38,
     "total": 3024741,
-    "evidence": "Exact token totals; public-safe repo label from local cwd and tool context metadata."
-  },
-  {
-    "date": "2026-05-14",
-    "repo": "PR review",
-    "codex_tokens": 0,
-    "claude_code_tokens": 1235548,
-    "claude_code_calls": 14,
-    "total": 1235548,
     "evidence": "Exact token totals; public-safe repo label from local cwd and tool context metadata."
   },
   {
@@ -478,15 +478,6 @@
   },
   {
     "date": "2026-05-25",
-    "repo": "API service",
-    "codex_tokens": 0,
-    "claude_code_tokens": 18888726,
-    "claude_code_calls": 135,
-    "total": 18888726,
-    "evidence": "Exact token totals; public-safe repo label from local cwd and tool context metadata."
-  },
-  {
-    "date": "2026-05-25",
     "repo": "Installer",
     "codex_tokens": 0,
     "claude_code_tokens": 12238086,
@@ -504,12 +495,12 @@
     "evidence": "Exact token totals; public-safe repo label from local cwd and tool context metadata."
   },
   {
-    "date": "2026-05-26",
-    "repo": "API service",
+    "date": "2026-05-25",
+    "repo": "tsystem-api",
     "codex_tokens": 0,
-    "claude_code_tokens": 3316557,
-    "claude_code_calls": 30,
-    "total": 3316557,
+    "claude_code_tokens": 18888726,
+    "claude_code_calls": 135,
+    "total": 18888726,
     "evidence": "Exact token totals; public-safe repo label from local cwd and tool context metadata."
   },
   {
@@ -528,6 +519,15 @@
     "claude_code_tokens": 0,
     "claude_code_calls": 0,
     "total": 31498617,
+    "evidence": "Exact token totals; public-safe repo label from local cwd and tool context metadata."
+  },
+  {
+    "date": "2026-05-26",
+    "repo": "tsystem-api",
+    "codex_tokens": 0,
+    "claude_code_tokens": 3316557,
+    "claude_code_calls": 30,
+    "total": 3316557,
     "evidence": "Exact token totals; public-safe repo label from local cwd and tool context metadata."
   },
   {
@@ -750,18 +750,18 @@
     "date": "2026-06-10",
     "repo": "Hive",
     "codex_tokens": 0,
-    "claude_code_tokens": 93711665,
-    "claude_code_calls": 303,
-    "total": 93711665,
+    "claude_code_tokens": 97255766,
+    "claude_code_calls": 314,
+    "total": 97255766,
     "evidence": "Exact token totals; public-safe repo label from local cwd and tool context metadata."
   },
   {
     "date": "2026-06-10",
     "repo": "Token dashboard",
-    "codex_tokens": 23852037,
+    "codex_tokens": 26218604,
     "claude_code_tokens": 17025,
     "claude_code_calls": 1,
-    "total": 23869062,
+    "total": 26235629,
     "evidence": "Exact token totals; public-safe repo label from local cwd and tool context metadata."
   }
 ]
