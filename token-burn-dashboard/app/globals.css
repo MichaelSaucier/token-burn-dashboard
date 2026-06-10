@@ -106,6 +106,7 @@ h1 {
 .grid,
 .sourceGrid,
 .driverGrid,
+.repoGrid,
 .equivalents {
   display: grid;
   gap: 14px;
@@ -164,6 +165,10 @@ h1 {
 
 .panel {
   overflow: hidden;
+}
+
+.grid > .panel:only-child {
+  grid-column: 1 / -1;
 }
 
 .panelHeader {
@@ -280,12 +285,21 @@ h1 {
   padding: 16px;
 }
 
-.driver {
+.driver,
+.repoRow {
   display: grid;
   grid-template-columns: minmax(90px, 0.7fr) minmax(0, 1fr) 118px;
   gap: 12px;
   align-items: center;
   color: var(--soft);
+}
+
+.repoGrid {
+  padding: 16px;
+}
+
+.repoRow {
+  grid-template-columns: minmax(90px, 0.5fr) minmax(0, 1fr) 132px minmax(220px, 0.9fr);
 }
 
 .actionList {
@@ -395,7 +409,8 @@ h1 {
     font-size: 30px;
   }
 
-  .driver {
+  .driver,
+  .repoRow {
     grid-template-columns: 1fr;
   }
 }

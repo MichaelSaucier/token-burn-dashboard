@@ -25,6 +25,23 @@ export type BurnRow = Required<Pick<RawBurnRow, SourceKey>> &
     total: number;
   };
 
+export type RawRepoBurnRow = {
+  date: string;
+  repo: string;
+  codex_tokens?: number;
+  claude_code_tokens?: number;
+  claude_code_calls?: number;
+  total?: number;
+  evidence?: string;
+};
+
+export type RepoBurnRow = Required<
+  Pick<RawRepoBurnRow, "codex_tokens" | "claude_code_tokens" | "claude_code_calls">
+> &
+  Omit<RawRepoBurnRow, "codex_tokens" | "claude_code_tokens" | "claude_code_calls" | "total"> & {
+    total: number;
+  };
+
 export function normalizeRows(rows: RawBurnRow[]): BurnRow[] {
   return rows
     .map((row) => {
@@ -51,6 +68,26 @@ export function normalizeRows(rows: RawBurnRow[]): BurnRow[] {
 
 export function sumSource(rows: BurnRow[], key: SourceKey) {
   return rows.reduce((sum, row) => sum + row[key], 0);
+}
+
+export function normalizeRepoRows(rows: RawRepoBurnRow[]): RepoBurnRow[] {
+  return rows
+    .map((row) => {
+      const codex = asNumber(row.codex_tokens);
+      const claudeCode = asNumber(row.claude_code_tokens);
+      const computedTotal = codex + claudeCode;
+
+      return {
+        date: row.date,
+        repo: row.repo || "unattributed",
+        codex_tokens: codex,
+        claude_code_tokens: claudeCode,
+        claude_code_calls: asNumber(row.claude_code_calls),
+        total: asNumber(row.total) || computedTotal,
+        evidence: row.evidence || "",
+      };
+    })
+    .sort((a, b) => a.date.localeCompare(b.date) || a.repo.localeCompare(b.repo));
 }
 
 function asNumber(value: number | undefined) {

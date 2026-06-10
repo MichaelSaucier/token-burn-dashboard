@@ -3,7 +3,8 @@
 import { useMemo, useState } from "react";
 
 import rawRows from "../data/daily-burn.json";
-import { normalizeRows, sourceColumns, sumSource } from "../lib/burn-data";
+import rawRepoRows from "../data/repo-burn.json";
+import { normalizeRepoRows, normalizeRows, sourceColumns, sumSource } from "../lib/burn-data";
 import { getWindowRows, type WindowKey, windows } from "../lib/date-windows";
 import {
   fermiScale,
@@ -15,12 +16,15 @@ import {
 } from "../lib/token-math";
 
 const rows = normalizeRows(rawRows);
+const repoRows = normalizeRepoRows(rawRepoRows);
 
 export default function TokenBurnDashboard() {
   const [windowKey, setWindowKey] = useState<WindowKey>("180");
 
   const selectedRows = useMemo(() => getWindowRows(rows, windowKey), [windowKey]);
+  const selectedRepoRows = useMemo(() => getWindowRows(repoRows, windowKey), [windowKey]);
   const total = sumTokens(selectedRows);
+  const repoExactTotal = selectedRepoRows.reduce((sum, row) => sum + row.total, 0);
   const maxDay = Math.max(...selectedRows.map((row) => row.total), 0);
   const peakDay = selectedRows.reduce(
     (peak, row) => (row.total > peak.total ? row : peak),
@@ -37,7 +41,8 @@ export default function TokenBurnDashboard() {
   );
   const sourceTotal = sourceColumns.reduce((sum, source) => sum + sumSource(selectedRows, source.key), 0);
   const tableRows = selectedRows.slice(-30).reverse();
-  const nextActions = buildNextActions(selectedRows, drivers, total);
+  const repos = buildRepoSummaryRows(selectedRepoRows, repoExactTotal);
+  const nextActions = buildNextActions(selectedRows, drivers, repos, total);
 
   return (
     <main className="page">
@@ -71,6 +76,7 @@ export default function TokenBurnDashboard() {
       <section className="statusBand" aria-label="Data status">
         <span>Timezone: Europe/Lisbon</span>
         <span>Codex and Claude Code: exact local log totals</span>
+        <span>Repo split: scrubbed cwd aliases for exact agent usage</span>
         <span>Claude chat and ChatGPT: estimated columns pending interview</span>
       </section>
 
@@ -157,6 +163,27 @@ export default function TokenBurnDashboard() {
 
       <section className="grid">
         <Panel
+          label="Repos"
+          title="Where exact agent burn went"
+          note="Scrubbed aliases from cwd metadata; exact Codex and Claude Code usage only."
+        >
+          <div className="repoGrid">
+            {repos.map((repo) => (
+              <div key={repo.repo} className="repoRow">
+                <strong>{repo.repo}</strong>
+                <span className="track">
+                  <i style={{ width: `${repo.share}%` }} />
+                </span>
+                <span>{repo.share}% / {formatTokens(repo.total)}</span>
+                <span className="muted">
+                  Codex {formatTokens(repo.codex)} / Claude {formatTokens(repo.claude)} / {repo.calls} calls
+                </span>
+              </div>
+            ))}
+          </div>
+        </Panel>
+
+        <Panel
           label="Scale equivalents"
           title="Make the number human"
           note="Approximate comparisons are useful only when the math stays visible."
@@ -171,7 +198,9 @@ export default function TokenBurnDashboard() {
             ))}
           </div>
         </Panel>
+      </section>
 
+      <section className="grid">
         <Panel
           label="Next work"
           title="What the computer should do next"
@@ -233,7 +262,7 @@ export default function TokenBurnDashboard() {
       </section>
 
       <p className="footerNote">
-        Data file: <code>data/daily-burn.json</code>. Raw logs and exports stay outside the app.
+        Data files: <code>data/daily-burn.json</code> and <code>data/repo-burn.json</code>. Raw logs and exports stay outside the app.
       </p>
     </main>
   );
@@ -290,10 +319,46 @@ function buildDriverRows(selectedRows: typeof rows, total: number) {
     .slice(0, 6);
 }
 
-function buildNextActions(selectedRows: typeof rows, drivers: ReturnType<typeof buildDriverRows>, total: number) {
+function buildRepoSummaryRows(selectedRows: typeof repoRows, total: number) {
+  const totals = new Map<
+    string,
+    { repo: string; total: number; codex: number; claude: number; calls: number }
+  >();
+
+  for (const row of selectedRows) {
+    const current = totals.get(row.repo) || {
+      repo: row.repo,
+      total: 0,
+      codex: 0,
+      claude: 0,
+      calls: 0,
+    };
+    current.total += row.total;
+    current.codex += row.codex_tokens;
+    current.claude += row.claude_code_tokens;
+    current.calls += row.claude_code_calls;
+    totals.set(row.repo, current);
+  }
+
+  return Array.from(totals.values())
+    .map((repo) => ({
+      ...repo,
+      share: total ? Math.round((repo.total / total) * 100) : 0,
+    }))
+    .sort((a, b) => b.total - a.total)
+    .slice(0, 8);
+}
+
+function buildNextActions(
+  selectedRows: typeof rows,
+  drivers: ReturnType<typeof buildDriverRows>,
+  repos: ReturnType<typeof buildRepoSummaryRows>,
+  total: number,
+) {
   const unlabeled = selectedRows.filter((row) => row.driver === "unlabeled" && row.total > 0).length;
   const estimatedTotal = selectedRows.reduce((sum, row) => sum + row.claude_chat_est + row.chatgpt_est, 0);
   const leadDriver = drivers.find((driver) => driver.label !== "unlabeled");
+  const leadRepo = repos[0];
   const actions = [];
 
   if (unlabeled > 0) {
@@ -302,6 +367,10 @@ function buildNextActions(selectedRows: typeof rows, drivers: ReturnType<typeof 
 
   if (estimatedTotal === 0) {
     actions.push("Add Claude chat and ChatGPT estimates only after exports or calibration answers are approved.");
+  }
+
+  if (leadRepo) {
+    actions.push(`Focus automation on ${leadRepo.repo}, the largest exact repo burn in this window.`);
   }
 
   if (leadDriver && total > 0) {

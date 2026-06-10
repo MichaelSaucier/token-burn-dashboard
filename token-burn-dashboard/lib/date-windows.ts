@@ -1,5 +1,3 @@
-import type { BurnRow } from "./burn-data";
-
 export type WindowKey = "90" | "180" | "365" | "all";
 
 export const windows: { key: WindowKey; label: string }[] = [
@@ -9,7 +7,7 @@ export const windows: { key: WindowKey; label: string }[] = [
   { key: "all", label: "all" },
 ];
 
-export function getWindowRows(rows: BurnRow[], windowKey: WindowKey) {
+export function getWindowRows<T extends { date: string }>(rows: T[], windowKey: WindowKey) {
   if (windowKey === "all" || rows.length === 0) return rows;
 
   const lastDate = toUtcDate(rows[rows.length - 1].date);

@@ -639,12 +639,12 @@
   },
   {
     "date": "2026-06-10",
-    "codex_tokens": 801837,
-    "claude_code_tokens": 12825236,
-    "claude_code_calls": 35,
+    "codex_tokens": 10965366,
+    "claude_code_tokens": 98826710,
+    "claude_code_calls": 247,
     "claude_chat_est": 0,
     "chatgpt_est": 0,
-    "total": 13627073,
+    "total": 109792076,
     "driver": "shipping",
     "evidence": "Exact local agent usage; driver label pending."
   }

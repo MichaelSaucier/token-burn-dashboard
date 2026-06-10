@@ -1,0 +1,668 @@
+[
+  {
+    "date": "2026-04-13",
+    "repo": "repo-56abfd1e",
+    "codex_tokens": 41513970,
+    "claude_code_tokens": 0,
+    "claude_code_calls": 0,
+    "total": 41513970,
+    "evidence": "Scrubbed repo alias from local cwd metadata."
+  },
+  {
+    "date": "2026-04-14",
+    "repo": "repo-56abfd1e",
+    "codex_tokens": 29396226,
+    "claude_code_tokens": 0,
+    "claude_code_calls": 0,
+    "total": 29396226,
+    "evidence": "Scrubbed repo alias from local cwd metadata."
+  },
+  {
+    "date": "2026-04-15",
+    "repo": "repo-56abfd1e",
+    "codex_tokens": 8247899,
+    "claude_code_tokens": 0,
+    "claude_code_calls": 0,
+    "total": 8247899,
+    "evidence": "Scrubbed repo alias from local cwd metadata."
+  },
+  {
+    "date": "2026-04-16",
+    "repo": "repo-56abfd1e",
+    "codex_tokens": 11485054,
+    "claude_code_tokens": 0,
+    "claude_code_calls": 0,
+    "total": 11485054,
+    "evidence": "Scrubbed repo alias from local cwd metadata."
+  },
+  {
+    "date": "2026-04-17",
+    "repo": "repo-51483583",
+    "codex_tokens": 51997,
+    "claude_code_tokens": 0,
+    "claude_code_calls": 0,
+    "total": 51997,
+    "evidence": "Scrubbed repo alias from local cwd metadata."
+  },
+  {
+    "date": "2026-04-17",
+    "repo": "repo-56abfd1e",
+    "codex_tokens": 16680208,
+    "claude_code_tokens": 0,
+    "claude_code_calls": 0,
+    "total": 16680208,
+    "evidence": "Scrubbed repo alias from local cwd metadata."
+  },
+  {
+    "date": "2026-04-18",
+    "repo": "repo-55c08749",
+    "codex_tokens": 0,
+    "claude_code_tokens": 5085161,
+    "claude_code_calls": 62,
+    "total": 5085161,
+    "evidence": "Scrubbed repo alias from local cwd metadata."
+  },
+  {
+    "date": "2026-04-18",
+    "repo": "repo-56abfd1e",
+    "codex_tokens": 370801,
+    "claude_code_tokens": 0,
+    "claude_code_calls": 0,
+    "total": 370801,
+    "evidence": "Scrubbed repo alias from local cwd metadata."
+  },
+  {
+    "date": "2026-04-22",
+    "repo": "repo-56abfd1e",
+    "codex_tokens": 2219013,
+    "claude_code_tokens": 0,
+    "claude_code_calls": 0,
+    "total": 2219013,
+    "evidence": "Scrubbed repo alias from local cwd metadata."
+  },
+  {
+    "date": "2026-04-23",
+    "repo": "repo-56abfd1e",
+    "codex_tokens": 3145771,
+    "claude_code_tokens": 0,
+    "claude_code_calls": 0,
+    "total": 3145771,
+    "evidence": "Scrubbed repo alias from local cwd metadata."
+  },
+  {
+    "date": "2026-04-25",
+    "repo": "repo-56abfd1e",
+    "codex_tokens": 928738,
+    "claude_code_tokens": 0,
+    "claude_code_calls": 0,
+    "total": 928738,
+    "evidence": "Scrubbed repo alias from local cwd metadata."
+  },
+  {
+    "date": "2026-04-26",
+    "repo": "repo-56abfd1e",
+    "codex_tokens": 7275033,
+    "claude_code_tokens": 0,
+    "claude_code_calls": 0,
+    "total": 7275033,
+    "evidence": "Scrubbed repo alias from local cwd metadata."
+  },
+  {
+    "date": "2026-04-27",
+    "repo": "repo-56abfd1e",
+    "codex_tokens": 106963975,
+    "claude_code_tokens": 0,
+    "claude_code_calls": 0,
+    "total": 106963975,
+    "evidence": "Scrubbed repo alias from local cwd metadata."
+  },
+  {
+    "date": "2026-04-28",
+    "repo": "repo-56abfd1e",
+    "codex_tokens": 9843139,
+    "claude_code_tokens": 0,
+    "claude_code_calls": 0,
+    "total": 9843139,
+    "evidence": "Scrubbed repo alias from local cwd metadata."
+  },
+  {
+    "date": "2026-04-28",
+    "repo": "repo-d9bfb428",
+    "codex_tokens": 16597123,
+    "claude_code_tokens": 0,
+    "claude_code_calls": 0,
+    "total": 16597123,
+    "evidence": "Scrubbed repo alias from local cwd metadata."
+  },
+  {
+    "date": "2026-04-29",
+    "repo": "repo-d9bfb428",
+    "codex_tokens": 126099679,
+    "claude_code_tokens": 0,
+    "claude_code_calls": 0,
+    "total": 126099679,
+    "evidence": "Scrubbed repo alias from local cwd metadata."
+  },
+  {
+    "date": "2026-04-30",
+    "repo": "repo-56abfd1e",
+    "codex_tokens": 121146527,
+    "claude_code_tokens": 0,
+    "claude_code_calls": 0,
+    "total": 121146527,
+    "evidence": "Scrubbed repo alias from local cwd metadata."
+  },
+  {
+    "date": "2026-04-30",
+    "repo": "repo-d9bfb428",
+    "codex_tokens": 28541144,
+    "claude_code_tokens": 0,
+    "claude_code_calls": 0,
+    "total": 28541144,
+    "evidence": "Scrubbed repo alias from local cwd metadata."
+  },
+  {
+    "date": "2026-05-01",
+    "repo": "repo-4c89382f",
+    "codex_tokens": 77724,
+    "claude_code_tokens": 0,
+    "claude_code_calls": 0,
+    "total": 77724,
+    "evidence": "Scrubbed repo alias from local cwd metadata."
+  },
+  {
+    "date": "2026-05-01",
+    "repo": "repo-5fdfdc01",
+    "codex_tokens": 35619,
+    "claude_code_tokens": 0,
+    "claude_code_calls": 0,
+    "total": 35619,
+    "evidence": "Scrubbed repo alias from local cwd metadata."
+  },
+  {
+    "date": "2026-05-01",
+    "repo": "repo-f1247c26",
+    "codex_tokens": 753771,
+    "claude_code_tokens": 0,
+    "claude_code_calls": 0,
+    "total": 753771,
+    "evidence": "Scrubbed repo alias from local cwd metadata."
+  },
+  {
+    "date": "2026-05-09",
+    "repo": "repo-ee7a9479",
+    "codex_tokens": 728521,
+    "claude_code_tokens": 0,
+    "claude_code_calls": 0,
+    "total": 728521,
+    "evidence": "Scrubbed repo alias from local cwd metadata."
+  },
+  {
+    "date": "2026-05-10",
+    "repo": "repo-ee7a9479",
+    "codex_tokens": 125366,
+    "claude_code_tokens": 0,
+    "claude_code_calls": 0,
+    "total": 125366,
+    "evidence": "Scrubbed repo alias from local cwd metadata."
+  },
+  {
+    "date": "2026-05-11",
+    "repo": "repo-ee7a9479",
+    "codex_tokens": 7014958,
+    "claude_code_tokens": 0,
+    "claude_code_calls": 0,
+    "total": 7014958,
+    "evidence": "Scrubbed repo alias from local cwd metadata."
+  },
+  {
+    "date": "2026-05-12",
+    "repo": "repo-c575d062",
+    "codex_tokens": 0,
+    "claude_code_tokens": 43792312,
+    "claude_code_calls": 144,
+    "total": 43792312,
+    "evidence": "Scrubbed repo alias from local cwd metadata."
+  },
+  {
+    "date": "2026-05-12",
+    "repo": "repo-ee7a9479",
+    "codex_tokens": 26258468,
+    "claude_code_tokens": 0,
+    "claude_code_calls": 0,
+    "total": 26258468,
+    "evidence": "Scrubbed repo alias from local cwd metadata."
+  },
+  {
+    "date": "2026-05-13",
+    "repo": "repo-c575d062",
+    "codex_tokens": 0,
+    "claude_code_tokens": 5183385,
+    "claude_code_calls": 34,
+    "total": 5183385,
+    "evidence": "Scrubbed repo alias from local cwd metadata."
+  },
+  {
+    "date": "2026-05-13",
+    "repo": "repo-ee7a9479",
+    "codex_tokens": 2567217,
+    "claude_code_tokens": 0,
+    "claude_code_calls": 0,
+    "total": 2567217,
+    "evidence": "Scrubbed repo alias from local cwd metadata."
+  },
+  {
+    "date": "2026-05-14",
+    "repo": "repo-28afa285",
+    "codex_tokens": 0,
+    "claude_code_tokens": 3024741,
+    "claude_code_calls": 38,
+    "total": 3024741,
+    "evidence": "Scrubbed repo alias from local cwd metadata."
+  },
+  {
+    "date": "2026-05-14",
+    "repo": "repo-62d93e82",
+    "codex_tokens": 0,
+    "claude_code_tokens": 1235548,
+    "claude_code_calls": 14,
+    "total": 1235548,
+    "evidence": "Scrubbed repo alias from local cwd metadata."
+  },
+  {
+    "date": "2026-05-14",
+    "repo": "repo-72c57cde",
+    "codex_tokens": 0,
+    "claude_code_tokens": 6497851,
+    "claude_code_calls": 83,
+    "total": 6497851,
+    "evidence": "Scrubbed repo alias from local cwd metadata."
+  },
+  {
+    "date": "2026-05-15",
+    "repo": "repo-72c57cde",
+    "codex_tokens": 0,
+    "claude_code_tokens": 9301950,
+    "claude_code_calls": 63,
+    "total": 9301950,
+    "evidence": "Scrubbed repo alias from local cwd metadata."
+  },
+  {
+    "date": "2026-05-15",
+    "repo": "repo-9547937f",
+    "codex_tokens": 0,
+    "claude_code_tokens": 979694,
+    "claude_code_calls": 16,
+    "total": 979694,
+    "evidence": "Scrubbed repo alias from local cwd metadata."
+  },
+  {
+    "date": "2026-05-16",
+    "repo": "repo-28afa285",
+    "codex_tokens": 0,
+    "claude_code_tokens": 2984260,
+    "claude_code_calls": 21,
+    "total": 2984260,
+    "evidence": "Scrubbed repo alias from local cwd metadata."
+  },
+  {
+    "date": "2026-05-16",
+    "repo": "repo-72c57cde",
+    "codex_tokens": 0,
+    "claude_code_tokens": 853702,
+    "claude_code_calls": 13,
+    "total": 853702,
+    "evidence": "Scrubbed repo alias from local cwd metadata."
+  },
+  {
+    "date": "2026-05-17",
+    "repo": "repo-28afa285",
+    "codex_tokens": 0,
+    "claude_code_tokens": 17543715,
+    "claude_code_calls": 82,
+    "total": 17543715,
+    "evidence": "Scrubbed repo alias from local cwd metadata."
+  },
+  {
+    "date": "2026-05-18",
+    "repo": "repo-c575d062",
+    "codex_tokens": 0,
+    "claude_code_tokens": 7340857,
+    "claude_code_calls": 41,
+    "total": 7340857,
+    "evidence": "Scrubbed repo alias from local cwd metadata."
+  },
+  {
+    "date": "2026-05-19",
+    "repo": "repo-72c57cde",
+    "codex_tokens": 0,
+    "claude_code_tokens": 6509779,
+    "claude_code_calls": 40,
+    "total": 6509779,
+    "evidence": "Scrubbed repo alias from local cwd metadata."
+  },
+  {
+    "date": "2026-05-19",
+    "repo": "repo-c575d062",
+    "codex_tokens": 0,
+    "claude_code_tokens": 3169505,
+    "claude_code_calls": 32,
+    "total": 3169505,
+    "evidence": "Scrubbed repo alias from local cwd metadata."
+  },
+  {
+    "date": "2026-05-20",
+    "repo": "repo-c575d062",
+    "codex_tokens": 0,
+    "claude_code_tokens": 22462858,
+    "claude_code_calls": 110,
+    "total": 22462858,
+    "evidence": "Scrubbed repo alias from local cwd metadata."
+  },
+  {
+    "date": "2026-05-22",
+    "repo": "repo-b9a8e64a",
+    "codex_tokens": 78643657,
+    "claude_code_tokens": 0,
+    "claude_code_calls": 0,
+    "total": 78643657,
+    "evidence": "Scrubbed repo alias from local cwd metadata."
+  },
+  {
+    "date": "2026-05-22",
+    "repo": "repo-e458a423",
+    "codex_tokens": 0,
+    "claude_code_tokens": 8592963,
+    "claude_code_calls": 58,
+    "total": 8592963,
+    "evidence": "Scrubbed repo alias from local cwd metadata."
+  },
+  {
+    "date": "2026-05-23",
+    "repo": "repo-b9a8e64a",
+    "codex_tokens": 13481125,
+    "claude_code_tokens": 0,
+    "claude_code_calls": 0,
+    "total": 13481125,
+    "evidence": "Scrubbed repo alias from local cwd metadata."
+  },
+  {
+    "date": "2026-05-23",
+    "repo": "repo-c575d062",
+    "codex_tokens": 0,
+    "claude_code_tokens": 1355843,
+    "claude_code_calls": 15,
+    "total": 1355843,
+    "evidence": "Scrubbed repo alias from local cwd metadata."
+  },
+  {
+    "date": "2026-05-24",
+    "repo": "repo-b9a8e64a",
+    "codex_tokens": 18710813,
+    "claude_code_tokens": 0,
+    "claude_code_calls": 0,
+    "total": 18710813,
+    "evidence": "Scrubbed repo alias from local cwd metadata."
+  },
+  {
+    "date": "2026-05-24",
+    "repo": "repo-e458a423",
+    "codex_tokens": 0,
+    "claude_code_tokens": 7081551,
+    "claude_code_calls": 40,
+    "total": 7081551,
+    "evidence": "Scrubbed repo alias from local cwd metadata."
+  },
+  {
+    "date": "2026-05-25",
+    "repo": "repo-a7ecca2c",
+    "codex_tokens": 0,
+    "claude_code_tokens": 18888726,
+    "claude_code_calls": 135,
+    "total": 18888726,
+    "evidence": "Scrubbed repo alias from local cwd metadata."
+  },
+  {
+    "date": "2026-05-25",
+    "repo": "repo-b9a8e64a",
+    "codex_tokens": 95951094,
+    "claude_code_tokens": 0,
+    "claude_code_calls": 0,
+    "total": 95951094,
+    "evidence": "Scrubbed repo alias from local cwd metadata."
+  },
+  {
+    "date": "2026-05-25",
+    "repo": "repo-e458a423",
+    "codex_tokens": 0,
+    "claude_code_tokens": 12238086,
+    "claude_code_calls": 61,
+    "total": 12238086,
+    "evidence": "Scrubbed repo alias from local cwd metadata."
+  },
+  {
+    "date": "2026-05-26",
+    "repo": "repo-a7ecca2c",
+    "codex_tokens": 0,
+    "claude_code_tokens": 3316557,
+    "claude_code_calls": 30,
+    "total": 3316557,
+    "evidence": "Scrubbed repo alias from local cwd metadata."
+  },
+  {
+    "date": "2026-05-26",
+    "repo": "repo-b9a8e64a",
+    "codex_tokens": 31498617,
+    "claude_code_tokens": 0,
+    "claude_code_calls": 0,
+    "total": 31498617,
+    "evidence": "Scrubbed repo alias from local cwd metadata."
+  },
+  {
+    "date": "2026-05-26",
+    "repo": "repo-e458a423",
+    "codex_tokens": 0,
+    "claude_code_tokens": 169403,
+    "claude_code_calls": 3,
+    "total": 169403,
+    "evidence": "Scrubbed repo alias from local cwd metadata."
+  },
+  {
+    "date": "2026-05-27",
+    "repo": "repo-b9a8e64a",
+    "codex_tokens": 7891161,
+    "claude_code_tokens": 0,
+    "claude_code_calls": 0,
+    "total": 7891161,
+    "evidence": "Scrubbed repo alias from local cwd metadata."
+  },
+  {
+    "date": "2026-05-28",
+    "repo": "repo-28afa285",
+    "codex_tokens": 0,
+    "claude_code_tokens": 11953835,
+    "claude_code_calls": 60,
+    "total": 11953835,
+    "evidence": "Scrubbed repo alias from local cwd metadata."
+  },
+  {
+    "date": "2026-05-28",
+    "repo": "repo-44e83c3e",
+    "codex_tokens": 0,
+    "claude_code_tokens": 3175739,
+    "claude_code_calls": 36,
+    "total": 3175739,
+    "evidence": "Scrubbed repo alias from local cwd metadata."
+  },
+  {
+    "date": "2026-05-28",
+    "repo": "repo-c575d062",
+    "codex_tokens": 0,
+    "claude_code_tokens": 3275685,
+    "claude_code_calls": 31,
+    "total": 3275685,
+    "evidence": "Scrubbed repo alias from local cwd metadata."
+  },
+  {
+    "date": "2026-05-29",
+    "repo": "repo-c575d062",
+    "codex_tokens": 0,
+    "claude_code_tokens": 828809,
+    "claude_code_calls": 8,
+    "total": 828809,
+    "evidence": "Scrubbed repo alias from local cwd metadata."
+  },
+  {
+    "date": "2026-05-30",
+    "repo": "repo-c575d062",
+    "codex_tokens": 0,
+    "claude_code_tokens": 6917601,
+    "claude_code_calls": 66,
+    "total": 6917601,
+    "evidence": "Scrubbed repo alias from local cwd metadata."
+  },
+  {
+    "date": "2026-05-31",
+    "repo": "repo-c575d062",
+    "codex_tokens": 0,
+    "claude_code_tokens": 6777576,
+    "claude_code_calls": 68,
+    "total": 6777576,
+    "evidence": "Scrubbed repo alias from local cwd metadata."
+  },
+  {
+    "date": "2026-06-01",
+    "repo": "repo-c575d062",
+    "codex_tokens": 0,
+    "claude_code_tokens": 104039207,
+    "claude_code_calls": 278,
+    "total": 104039207,
+    "evidence": "Scrubbed repo alias from local cwd metadata."
+  },
+  {
+    "date": "2026-06-01",
+    "repo": "repo-ee7a9479",
+    "codex_tokens": 27976,
+    "claude_code_tokens": 0,
+    "claude_code_calls": 0,
+    "total": 27976,
+    "evidence": "Scrubbed repo alias from local cwd metadata."
+  },
+  {
+    "date": "2026-06-02",
+    "repo": "repo-72c57cde",
+    "codex_tokens": 0,
+    "claude_code_tokens": 4000921,
+    "claude_code_calls": 29,
+    "total": 4000921,
+    "evidence": "Scrubbed repo alias from local cwd metadata."
+  },
+  {
+    "date": "2026-06-02",
+    "repo": "repo-c575d062",
+    "codex_tokens": 0,
+    "claude_code_tokens": 62632447,
+    "claude_code_calls": 222,
+    "total": 62632447,
+    "evidence": "Scrubbed repo alias from local cwd metadata."
+  },
+  {
+    "date": "2026-06-03",
+    "repo": "repo-c575d062",
+    "codex_tokens": 0,
+    "claude_code_tokens": 33065585,
+    "claude_code_calls": 157,
+    "total": 33065585,
+    "evidence": "Scrubbed repo alias from local cwd metadata."
+  },
+  {
+    "date": "2026-06-04",
+    "repo": "repo-c575d062",
+    "codex_tokens": 0,
+    "claude_code_tokens": 140882444,
+    "claude_code_calls": 369,
+    "total": 140882444,
+    "evidence": "Scrubbed repo alias from local cwd metadata."
+  },
+  {
+    "date": "2026-06-05",
+    "repo": "repo-c575d062",
+    "codex_tokens": 0,
+    "claude_code_tokens": 149836601,
+    "claude_code_calls": 498,
+    "total": 149836601,
+    "evidence": "Scrubbed repo alias from local cwd metadata."
+  },
+  {
+    "date": "2026-06-06",
+    "repo": "repo-44e83c3e",
+    "codex_tokens": 0,
+    "claude_code_tokens": 134304431,
+    "claude_code_calls": 320,
+    "total": 134304431,
+    "evidence": "Scrubbed repo alias from local cwd metadata."
+  },
+  {
+    "date": "2026-06-06",
+    "repo": "repo-c575d062",
+    "codex_tokens": 0,
+    "claude_code_tokens": 97665784,
+    "claude_code_calls": 261,
+    "total": 97665784,
+    "evidence": "Scrubbed repo alias from local cwd metadata."
+  },
+  {
+    "date": "2026-06-07",
+    "repo": "repo-44e83c3e",
+    "codex_tokens": 0,
+    "claude_code_tokens": 20901573,
+    "claude_code_calls": 54,
+    "total": 20901573,
+    "evidence": "Scrubbed repo alias from local cwd metadata."
+  },
+  {
+    "date": "2026-06-07",
+    "repo": "repo-c575d062",
+    "codex_tokens": 0,
+    "claude_code_tokens": 6779990,
+    "claude_code_calls": 47,
+    "total": 6779990,
+    "evidence": "Scrubbed repo alias from local cwd metadata."
+  },
+  {
+    "date": "2026-06-08",
+    "repo": "repo-c575d062",
+    "codex_tokens": 0,
+    "claude_code_tokens": 193704021,
+    "claude_code_calls": 538,
+    "total": 193704021,
+    "evidence": "Scrubbed repo alias from local cwd metadata."
+  },
+  {
+    "date": "2026-06-09",
+    "repo": "repo-c575d062",
+    "codex_tokens": 0,
+    "claude_code_tokens": 32383616,
+    "claude_code_calls": 148,
+    "total": 32383616,
+    "evidence": "Scrubbed repo alias from local cwd metadata."
+  },
+  {
+    "date": "2026-06-10",
+    "repo": "repo-b05b9e5a",
+    "codex_tokens": 10965366,
+    "claude_code_tokens": 17025,
+    "claude_code_calls": 1,
+    "total": 10982391,
+    "evidence": "Scrubbed repo alias from local cwd metadata."
+  },
+  {
+    "date": "2026-06-10",
+    "repo": "repo-c575d062",
+    "codex_tokens": 0,
+    "claude_code_tokens": 98809685,
+    "claude_code_calls": 246,
+    "total": 98809685,
+    "evidence": "Scrubbed repo alias from local cwd metadata."
+  }
+]
