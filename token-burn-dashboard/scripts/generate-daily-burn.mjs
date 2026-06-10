@@ -176,7 +176,7 @@ function buildRepoRows(repoMaps) {
       claude_code_tokens: row.claude_code_tokens,
       claude_code_calls: row.claude_code_calls,
       total: row.codex_tokens + row.claude_code_tokens,
-      evidence: row.repo === "unattributed" ? "No cwd metadata available." : "Scrubbed repo alias from local cwd metadata.",
+      evidence: row.repo === "unattributed" ? "No cwd metadata available." : "Public-safe repo label from local cwd metadata.",
     }))
     .filter((row) => row.total > 0)
     .sort((a, b) => a.date.localeCompare(b.date) || a.repo.localeCompare(b.repo));

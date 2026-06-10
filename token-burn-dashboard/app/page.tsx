@@ -76,7 +76,7 @@ export default function TokenBurnDashboard() {
       <section className="statusBand" aria-label="Data status">
         <span>Timezone: Europe/Lisbon</span>
         <span>Codex and Claude Code: exact local log totals</span>
-        <span>Repo split: scrubbed cwd aliases for exact agent usage</span>
+        <span>Repo split: public-safe labels from exact cwd metadata</span>
         <span>Claude chat and ChatGPT: estimated columns pending interview</span>
       </section>
 
@@ -165,7 +165,7 @@ export default function TokenBurnDashboard() {
         <Panel
           label="Repos"
           title="Where exact agent burn went"
-          note="Scrubbed aliases from cwd metadata; exact Codex and Claude Code usage only."
+          note="Public-safe labels from local cwd metadata; exact Codex and Claude Code usage only."
         >
           <div className="repoGrid">
             {repos.map((repo) => (
