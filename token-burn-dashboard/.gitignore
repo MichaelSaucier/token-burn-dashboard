@@ -1,0 +1,7 @@
+.next/
+out/
+node_modules/
+data/*.local.json
+data/*.private.json
+data/*exports*
+*.log
